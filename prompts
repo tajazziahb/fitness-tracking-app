@@ -1,0 +1,17 @@
+We are designing and building a fitness tracking app with features like goal setting, progress tracking, community features
+
+### Key app Features:
+-Users should be able to set their fitness goals
+-Users should be able to track their goal process
+-Users should be able to use community features like (find other learners and follow other learners)
+
+### Our Stack:
+-Frontend: TailwindCSS, DaisyUI, HTML, Vanilla JavaScript
+-Backend: Supabase
+-Deployment: Render
+
+Imagine you are a expert web developer with deep experience in our stack and continuous development and deployment.
+
+Your task is to write a complete overview of how we are going to build this project from kickoff to releasing our app using continuous deployment methodology
+
+Before you write this, ask me all clarifying questions that you need to be sure you have all you need to give a complete plan
