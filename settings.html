@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FitTrack-Settings</title>
+    <link href="./dist/styles.css" rel="stylesheet">
+  </head>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 max-w-md py-6">
+        <div class="flex items-center justify-between mb-6">
+            <h1 class="text-2xl font-bold">Settings</h1>
+            <button class="btn btn-ghost btn-square">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="space-y-4">
+            <!-- My Profile -->
+            <button class="w-full bg-white rounded-lg shadow hover:shadow-md transition-shadow p-4">
+                <div class="flex items-center">
+                    <img src="/api/placeholder/48/48" alt="Profile Picture" class="w-12 h-12 rounded-full">
+                    <div class="ml-4 flex-grow">
+                        <h2 class="font-semibold">My Profile</h2>
+                        <p class="text-sm text-gray-500">Edit profile details</p>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 text-gray-400">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </button>
+
+            <!-- Language Preferences -->
+            <button class="w-full bg-white rounded-lg shadow hover:shadow-md transition-shadow p-4">
+                <div class="flex items-center justify-between">
+                    <h2 class="font-semibold">Language Preferences</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 text-gray-400">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </button>
+
+            <!-- Notification Preferences -->
+            <button class="w-full bg-white rounded-lg shadow hover:shadow-md transition-shadow p-4">
+                <div class="flex items-center justify-between">
+                    <h2 class="font-semibold">Notification Preferences</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 text-gray-400">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </button>
+
+            <!-- App Settings -->
+            <button class="w-full bg-white rounded-lg shadow hover:shadow-md transition-shadow p-4">
+                <div class="flex items-center justify-between">
+                    <h2 class="font-semibold">App Settings</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 text-gray-400">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </button>
+
+            <!-- Help & Support -->
+            <button class="w-full bg-white rounded-lg shadow hover:shadow-md transition-shadow p-4">
+                <div class="flex items-center justify-between">
+                    <h2 class="font-semibold">Help & Support</h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6 text-gray-400">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            </button>
+        </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+</body>
