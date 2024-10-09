@@ -1,18 +1,21 @@
 import './style.css'
-import javascriptLogo from '../javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
 
-document.querySelector('#app').innerHTML = `
-<!-- <div>-->
-<!--  <div class="p-16 space-y-8">-->
-<!--  -->
-<!--    <h1 class="text-5xl">Welcome to Fit Track</h1>-->
-<!--    -->
-<!--    <button class="btn btn-primary w-1/2">Start Now</button>-->
-<!--  </div>-->
-<!--</div>-->
-`
+document.addEventListener("DOMContentLoaded", () => {
+    console.log('FitTrack app initialized')
+});
 
+// Add any JavaScript functionality here
+document.querySelectorAll('.btn').forEach(button => {
+    button.addEventListener('click', () => {
+        alert('Goals saved!');
+    });
+});
 
-setupCounter(document.querySelector('#counter'))
+// Add click handlers for the settings options
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const settingName = e.currentTarget.querySelector('h2').textContent;
+                console.log(`Clicked: ${settingName}`);
+                // Here you can add navigation or modal functionality
+            });
+        });

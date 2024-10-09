@@ -1,5 +1,6 @@
 # Fitness Tracking App
 
+## Summary
 Welcome to the Fitness Tracking App! This project is designed to help users set and achieve their fitness goals while engaging with a community of like-minded individuals. The app tracks progress, supports goal setting, and provides community features that enhance the user experience.
 
 ## Key Features
