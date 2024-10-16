@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FitTrack | Goals</title>
+    <link href="/dist/styles.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mx-auto px-4 max-w-md" id="app">
+         <!-- Header -->
+        <header class="flex justify-between items-center mb-12">
+            <div class="flex items-center">
+                <img src="https://wtgf.org/wp-content/uploads/2016/06/running-100x100.png" alt="FitTrack Logo" class="w-10 h-10 mr-2">
+                <span class="text-xl font-bold text-lime-500">FitTrack</span>
+            </div>
+            <div class="flex">
+                 <a id="homeBtn" class=" font-bold text-lime-500 rounded-lg p-2 " href="/index.html">Home</a>
+                 <a id="communityBtn" class=" font-bold text-lime-500 rounded-lg p-2 " href="/community/">Community</a>
+            </div>
+        </header>
+
+        <main class="space-y-6 pb-8">
+            <h1 class=" text-orange-500 text-2xl font-bold mb-6">Set Your Goals</h1>
+
+            <div class="bg-black rounded-lg shadow p-6 space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-lime-500 mb-1">Target Weight (lbs)</label>
+                    <input type="number" placeholder="" class="input input-bordered w-1/2 mb-4 ">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-lime-500 mb-2">Activity Level</label>
+                    <div class="space-y-2 mb-4">
+                        <label class="flex items-center">
+                            <input type="radio" name="activity" class="radio">
+                            <span class="ml-2 mb-2 text-yellow-50">Low</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="activity" class="radio">
+                            <span class="ml-2 text-yellow-50">Medium</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="activity" class="radio">
+                            <span class="ml-2 text-yellow-50">High</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-lime-500">Target Date</label>
+                    <input type="date" placeholder="YYYY-MM-DD" class="input input-bordered w-1/2 mb-4">
+                </div>
+
+                <button class="text-yellow-50 rounded-lg p-2 bg-gray-800 w-full mb-2">Save Goals</button>
+            </div>
+
+            <div class="bg-black rounded-lg shadow p-6">
+                <label class="block text-sm font-medium text-lime-500">Daily Step Count</label>
+                <input type="number" placeholder="" class="input input-bordered w-1/2 mb-4"><br>
+                <button class="text-yellow-50 rounded-lg p-2 bg-gray-800 w-full">Save Goals</button>
+            </div>
+
+            <div class="bg-black rounded-lg shadow p-6">
+                <label class="block text-sm font-medium text-lime-500">How many workouts for this week?</label>
+                <div class="space-y-2">
+                    <label class="flex items-center">
+                        <input type="radio" name="workouts" class="radio">
+                        <span class="ml-2 text-yellow-50">1-2</span>
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="workouts" class="radio">
+                        <span class="ml-2 text-yellow-50">3-5</span>
+                    </label>
+                    <label class="flex items-center mb-4">
+                        <input type="radio" name="workouts" class="radio">
+                        <span class="ml-2 text-yellow-50">5+</span>
+                    </label>
+                </div>
+                <button class="text-yellow-50 rounded-lg p-2 bg-gray-800 w-full">Save Goals</button>
+            </div>
+        </main>
+    </div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

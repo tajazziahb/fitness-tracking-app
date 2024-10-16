@@ -1,6 +1,8 @@
 import './style.css'
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    console.log('I am logging something')
     console.log('FitTrack app initialized')
 });
 
