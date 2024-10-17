@@ -11,6 +11,7 @@ export default defineConfig({
         settings: resolve(__dirname, 'settings/index.html'),
         community: resolve(__dirname, 'community/index.html'),
         'add-goal': resolve(__dirname, 'add-goal/index.html'),
+        login: resolve(__dirname, 'login/index.html'),
       },
     },
   },
