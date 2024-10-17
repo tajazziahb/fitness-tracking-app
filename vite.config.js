@@ -1,6 +1,6 @@
 // vite.config.js
-import { resolve } from 'path'
-import { defineConfig } from 'vite'
+import {resolve} from 'path'
+import {defineConfig} from 'vite'
 
 export default defineConfig({
   build: {
@@ -12,6 +12,7 @@ export default defineConfig({
         community: resolve(__dirname, 'community/index.html'),
         'add-goal': resolve(__dirname, 'add-goal/index.html'),
         login: resolve(__dirname, 'login/index.html'),
+        'create-account': resolve(__dirname, 'create-account/index.html'),
       },
     },
   },
