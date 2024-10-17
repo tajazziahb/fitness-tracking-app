@@ -1,19 +1,21 @@
-// src/login.js
+// src/auth.js
 import {supabase} from "../src/supabase.js";
 
 // Function to sign up / create a new account
-export async function signUp(email, password) {
+export async function createAccount(email, password) {
     const { user, error } = await supabase.auth.signUp({
         email: email,
         password: password,
-    })
+    });
+
+    // console.log(user)
 
     if (error) {
         console.error('Error creating account:', error.message)
-        return error.message
+        return {success: false, message: error.message};
     }
 
-    console.log('User signed up:', user)
+    console.log('Account created successfully', user)
     return 'Account created, please verify your email.'
 }
 
