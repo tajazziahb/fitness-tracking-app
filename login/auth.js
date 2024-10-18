@@ -21,12 +21,12 @@ export async function createAccount(email, password) {
 
 // Function to log in
 export async function login(email, password) {
-    const { data : {session}, error } = await supabase.auth.signInWithPassword({
+    const { data: {session}, error } = await supabase.auth.signInWithPassword({
         email: email,
         password: password,
     })
 
-    // console.log(session)
+    console.log(session)
 
     if (error) {
         console.error('Error logging in:', error.message);
