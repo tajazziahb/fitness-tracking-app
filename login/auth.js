@@ -20,19 +20,21 @@ export async function createAccount(email, password) {
 }
 
 // Function to log in
-export async function signIn(email, password) {
-    const { user, error } = await supabase.auth.signInWithPassword({
+export async function login(email, password) {
+    const { data : {session}, error } = await supabase.auth.signInWithPassword({
         email: email,
         password: password,
     })
 
-    if (error) {
-        console.error('Error signing in:', error.message)
-        return error.message
-    }
+    // console.log(session)
 
-    console.log('User signed in:', user)
-    return 'Login successful'
+    if (error) {
+        console.error('Error logging in:', error.message);
+        return {success: false, message: error.message};
+    } else {
+        // console.log('Logged in successfully:', session)
+        return {success: true, session};
+    }
 }
 
 // Function to log out
