@@ -11,7 +11,7 @@ document.querySelector('#login-form')?.addEventListener('submit', async (e) => {
     // console.log(result.session)
 
     if (result.success) {
-        window.location.href = '/dashboard/';
+        window.location.href = '/add-goal/';
         localStorage.setItem('session', JSON.stringify(result.session) );
     }
 });
