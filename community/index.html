@@ -8,7 +8,17 @@
     <link href="/dist/styles.css" rel="stylesheet">
   </head>
 <body class="bg-gray-100">
+<script type="module">
+       import {supabase} from "../src/supabase.js";
 
+       // Get the current session
+       const {data : {session}} = await supabase.auth.getSession();
+
+       if (!session) {
+           // Redirect to the login page if the user is not logged in
+           window.location.href="/login/"
+       }
+</script>
   <!-- Main Container -->
   <div class="max-w-lg mx-auto p-4">
     <!-- Navbar -->

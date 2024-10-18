@@ -1,47 +1,18 @@
 // src/login.js
-import {supabase} from "../src/supabase.js";
+import { login } from './auth.js'
+document.querySelector('#login-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.querySelector('#login-email').value;
+    const password = document.querySelector('#login-password').value;
+    const result = await login(email, password);
 
-// Function to sign up / create a new account
-export async function signUp(email, password) {
-    const { user, error } = await supabase.auth.signUp({
-        email: email,
-        password: password,
-    })
+    // alert(result.message || 'Logged in successfully!')
 
-    if (error) {
-        console.error('Error creating account:', error.message)
-        return error.message
+    // console.log(result.session)
+
+    if (result.success) {
+        window.location.href = '/add-goal/';
+        localStorage.setItem('session', JSON.stringify(result.session) );
     }
+});
 
-    console.log('User signed up:', user)
-    return 'Account created, please verify your email.'
-}
-
-// Function to log in
-export async function signIn(email, password) {
-    const { user, error } = await supabase.auth.signInWithPassword({
-        email: email,
-        password: password,
-    })
-
-    if (error) {
-        console.error('Error signing in:', error.message)
-        return error.message
-    }
-
-    console.log('User signed in:', user)
-    return 'Login successful'
-}
-
-// Function to log out
-export async function signOut() {
-    const { error } = await supabase.auth.signOut()
-
-    if (error) {
-        console.error('Error signing out:', error.message)
-        return error.message
-    }
-
-    console.log('User signed out')
-    return 'Logout successful'
-}

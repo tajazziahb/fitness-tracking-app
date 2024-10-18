@@ -1,15 +1,24 @@
 <!-- src/create-account.html -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Create Account</title>
-  <link href="./dist/output.css" rel="stylesheet">
+  <link href="/dist/styles.css" rel="stylesheet">
 </head>
-
 <body class="min-h-screen bg-gray-100 flex items-center justify-center">
+ <script type="module">
+       import {supabase} from "../src/supabase.js";
+
+       // Get the current session
+       const {data : {session}} = await supabase.auth.getSession();
+
+       if (session) {
+           // Redirect to the login page if the user is not logged in
+           window.location.href="/add-goal/"
+       }
+ </script>
   <div class="card w-96 bg-base-100 shadow-xl">
     <div class="card-body">
       <h2 class="card-title text-center">Create Account</h2>
@@ -18,22 +27,22 @@
           <label class="label">
             <span class="label-text">Email</span>
           </label>
-          <input type="email" placeholder="Email" id="signup-email" class="input input-bordered">
+          <input type="email" placeholder="Email" id="create-email" class="input input-bordered">
         </div>
         <div class="form-control mt-4">
           <label class="label">
             <span class="label-text">Password</span>
           </label>
-          <input type="password" placeholder="Password" id="signup-password" class="input input-bordered">
+          <input type="password" placeholder="Password" id="create-password" class="input input-bordered">
         </div>
         <div class="form-control mt-6">
           <button type="submit" class="btn btn-primary">Create Account</button>
         </div>
       </form>
       <div id="message" class="text-red-500 mt-4"></div>
-      <p class="mt-4 text-center">Already have an account? <a href="login.html" class="text-blue-500">Login</a></p>
+      <p class="mt-4 text-center">Already have an account? <a href="/login/" class="text-blue-500">Login</a></p>
     </div>
   </div>
+  <script src="create-account.js" type="module"></script>
 </body>
-
 </html>
