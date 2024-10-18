@@ -43,12 +43,10 @@ export async function login(email, password) {
 
 
     if (error) {
-
         alert('Error signing out:' + error.message);
-        return error.message
     } else {
         alert('Signed out successfully!')
         localStorage.removeItem('session');
-        window.location.href = '/login/';
+        window.location.href = '/';
     }
 }
