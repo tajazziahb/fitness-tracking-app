@@ -47,6 +47,6 @@ export async function login(email, password) {
     } else {
         alert('Signed out successfully!')
         localStorage.removeItem('session');
-        window.location.href = '/';
+        window.location.href = '/login/';
     }
 }
