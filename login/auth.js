@@ -37,15 +37,18 @@ export async function login(email, password) {
     }
 }
 
-// Function to log out
-export async function signOut() {
+// Sign-out function
+ export async function signOut() {
     const { error } = await supabase.auth.signOut()
 
-    if (error) {
-        console.error('Error signing out:', error.message)
-        return error.message
-    }
 
-    console.log('User signed out')
-    return 'Logout successful'
+    if (error) {
+
+        alert('Error signing out:' + error.message);
+        return error.message
+    } else {
+        alert('Signed out successfully!')
+        localStorage.removeItem('session');
+        window.location.href = '/';
+    }
 }
