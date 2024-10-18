@@ -8,6 +8,19 @@
     <link href="/dist/styles.css" rel="stylesheet">
   </head>
   <body>
+  <script type="module">
+        import {supabase} from "../src/supabase.js";
+
+        // Get the current session
+        document.addEventListener('DOMContentLoaded', async () => {
+            const {data: {session}} = await supabase.auth.getSession();
+
+            if (!session) {
+                // If user is not logged in, redirect to login page
+                window.location.replace('/login/');
+            }
+        });
+  </script>
     <div class="container mx-auto px-4 py-8 max-w-md" id="app">
         <!-- Header -->
         <header class="flex justify-between items-center mb-12">
