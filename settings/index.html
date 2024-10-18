@@ -1,79 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FitTrack | Settings </title>
-    <link href="/dist/styles.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
-<body class="bg-secondary text-accent font-sans">
-<script type="module">
-       import {supabase} from "../src/supabase.js";
+<body>
 
-       // Get the current session
-       const {data : {session}} = await supabase.auth.getSession();
-
-       if (!session) {
-           // Redirect to the login page if the user is not logged in
-           window.location.href="/login/";
-       }
-</script>
-  <div class="max-w-md mx-auto p-4">
-    <!-- Header -->
-        <header class="flex justify-between items-center mb-12">
-            <div class="flex items-center">
-                <img src="https://wtgf.org/wp-content/uploads/2016/06/running-100x100.png" alt="FitTrack Logo" class="w-10 h-10 mr-2">
-                <span class="text-xl font-bold text-lime-500">FitTrack</span>
-            </div>
-            <div class="flex">
-                 <a id="homeBtn" class=" font-bold text-lime-500 rounded-lg p-2 " href="/index.html">Home</a>
-                 <a id="settingsBtn" class=" font-bold text-lime-500 rounded-lg p-2" href="/settings">Settings</a>
-                <a id="goalsBtn" class=" font-bold text-lime-500 rounded-lg p-2" href="/add-goal/">Goals</a>
-            </div>
-        </header>
-
-    <!-- Notifications and Dark Mode Section -->
-    <div class="bg-white p-4 rounded-lg shadow-lg mb-4">
-      <div class="flex justify-between items-center mb-4">
-        <span>Notification</span>
-        <input type="checkbox" class="toggle toggle-primary" checked>
-      </div>
-      <div class="flex justify-between items-center">
-        <span>Dark Mode</span>
-        <input type="checkbox" class="toggle toggle-primary">
-      </div>
-    </div>
-
-    <!-- Account Management Section -->
-    <div class="bg-white p-4 rounded-lg shadow-lg mb-4">
-      <h2 class="text-lg font-semibold mb-4">Account Management</h2>
-      <div class="flex justify-between items-center mb-2">
-        <span>Change Password</span>
-        <a href="#" class="text-accent"><img src="https://via.placeholder.com/20" alt="arrow"></a>
-      </div>
-      <div class="flex justify-between items-center">
-        <span>Privacy Settings</span>
-        <a href="#" class="text-accent"><img src="https://via.placeholder.com/20" alt="arrow"></a>
-      </div>
-    </div>
-
-    <!-- App Information Section -->
-    <div class="bg-white p-4 rounded-lg shadow-lg">
-      <h2 class="text-lg font-semibold mb-4">App Information</h2>
-      <div class="flex justify-between items-center mb-2">
-        <span>Version</span>
-        <span>1.0.0</span>
-      </div>
-      <div class="flex justify-between items-center">
-        <span>Support</span>
-        <a href="#" class="text-accent"><img src="https://via.placeholder.com/20" alt="arrow"></a>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // Optionally, you can add theme toggle behavior if needed
-  </script>
 </body>
 </html>

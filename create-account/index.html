@@ -8,17 +8,6 @@
   <link href="/dist/styles.css" rel="stylesheet">
 </head>
 <body class="min-h-screen bg-gray-100 flex items-center justify-center">
- <script type="module">
-       import {supabase} from "../src/supabase.js";
-
-       // Get the current session
-       const {data : {session}} = await supabase.auth.getSession();
-
-       if (session) {
-           // Redirect to the login page if the user is not logged in
-           window.location.href="/add-goal/"
-       }
- </script>
   <div class="card w-96 bg-base-100 shadow-xl">
     <div class="card-body">
       <h2 class="card-title text-center">Create Account</h2>
