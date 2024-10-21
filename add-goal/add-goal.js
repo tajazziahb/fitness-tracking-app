@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         } else {
             showModal('Success', 'Goal saved successfully!');
             triggerConfetti();
+            clearInputFields(["#target-weight", 'input[name="activity"]:checked', "#target-date"]);
         }
     }
 
@@ -69,6 +70,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         } else {
             showModal('Success', 'Goal saved successfully!');
             triggerConfetti();
+            clearInputFields(["#steps"]);
         }
     }
 
@@ -94,6 +96,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         } else {
             showModal('Success', 'Goal saved successfully!');
             triggerConfetti();
+            clearInputFields(['input[name="workouts"]:checked']);
         }
     }
 
@@ -112,6 +115,20 @@ document.addEventListener("DOMContentLoaded", async () => {
             particleCount: 100,
             spread: 70,
             origin: { y: 0.6 }
+        });
+    }
+
+    // Function to clear input fields
+    function clearInputFields(selectors) {
+        selectors.forEach(selector => {
+            const element = document.querySelector(selector);
+            if (element) {
+                if (element.type === 'radio' || element.type === 'checkbox') {
+                    element.checked = false;
+                } else {
+                    element.value = '';
+                }
+            }
         });
     }
 });
