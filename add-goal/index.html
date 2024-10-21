@@ -97,7 +97,22 @@
                 <button id="saveGoal3" class="text-yellow-50 rounded-lg p-2 bg-gray-800 w-full">Save Goals</button>
             </div>
         </main>
+</div>
+ <!-- DaisyUI Modal for Feedback -->
+    <div id="feedbackModal" class="modal">
+        <div class="modal-box">
+            <h2 id="feedbackTitle" class="text-lg text-orange-500 font-bold"></h2>
+            <p id="feedbackMessage" class="py-4 text-orange-500 font-bold"></p>
+            <div class="modal-action">
+                <button class="btn btn-primary" onclick="closeModal()">OK</button>
+            </div>
+        </div>
     </div>
 <script src="add-goal.js" type="module"></script>
+ <script>
+        function closeModal() {
+            document.getElementById('feedbackModal').classList.remove('modal-open');
+        }
+    </script>
 </body>
 </html>
