@@ -42,59 +42,59 @@
 
             <div class="bg-black rounded-lg shadow p-6 space-y-4">
                 <div>
-                    <label class="block text-sm font-medium text-lime-500 mb-1">Target Weight (lbs)</label>
-                    <input type="number" placeholder="" class="input input-bordered w-1/2 mb-4 ">
+                    <label class="block text-sm font-medium text-lime-500 mb-1">Target Weight (lbs)
+                    <input type="number" id="target-weight" class="input input-bordered w-1/2 mb-4 "></label>
                 </div>
 
                 <div>
                     <label class="block text-sm font-medium text-lime-500 mb-2">Activity Level</label>
-                    <div class="space-y-2 mb-4">
+                    <div id="activity" class="space-y-2 mb-4">
                         <label class="flex items-center">
-                            <input type="radio" name="activity" class="radio">
+                            <input type="radio" name="activity" value="Low" class="radio">
                             <span class="ml-2 mb-2 text-yellow-50">Low</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="radio" name="activity" class="radio">
+                            <input type="radio" name="activity" value="Medium" class="radio">
                             <span class="ml-2 text-yellow-50">Medium</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="radio" name="activity" class="radio">
+                            <input type="radio" name="activity" value="High" class="radio">
                             <span class="ml-2 text-yellow-50">High</span>
                         </label>
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-lime-500">Target Date</label>
-                    <input type="date" placeholder="YYYY-MM-DD" class="input input-bordered w-1/2 mb-4">
+                    <label class="block text-sm font-medium text-lime-500">Target Date
+                    <input type="date" placeholder="YYYY-MM-DD" class="input input-bordered w-1/2 mb-4" id="target-date"></label>
                 </div>
 
-                <button class="text-yellow-50 rounded-lg p-2 bg-gray-800 w-full mb-2">Save Goals</button>
+                <button id="saveGoal1" class="text-yellow-50 rounded-lg p-2 bg-gray-800 w-full mb-2">Save Goals</button>
             </div>
 
             <div class="bg-black rounded-lg shadow p-6">
                 <label class="block text-sm font-medium text-lime-500">Daily Step Count</label>
-                <input type="number" placeholder="" class="input input-bordered w-1/2 mb-4"><br>
-                <button class="text-yellow-50 rounded-lg p-2 bg-gray-800 w-full">Save Goals</button>
+                <input type="number" id="steps" class="input input-bordered w-1/2 mb-4"><br>
+                <button  id="saveGoal2" class="text-yellow-50 rounded-lg p-2 bg-gray-800 w-full">Save Goals</button>
             </div>
 
             <div class="bg-black rounded-lg shadow p-6">
                 <label class="block text-sm font-medium text-lime-500">How many workouts for this week?</label>
                 <div class="space-y-2">
                     <label class="flex items-center">
-                        <input type="radio" name="workouts" class="radio">
+                        <input type="radio" name="workouts" value="1-2" class="radio">
                         <span class="ml-2 text-yellow-50">1-2</span>
                     </label>
                     <label class="flex items-center">
-                        <input type="radio" name="workouts" class="radio">
+                        <input type="radio" name="workouts" value="3-5" class="radio">
                         <span class="ml-2 text-yellow-50">3-5</span>
                     </label>
                     <label class="flex items-center mb-4">
-                        <input type="radio" name="workouts" class="radio">
+                        <input type="radio" name="workouts" value="5+" class="radio">
                         <span class="ml-2 text-yellow-50">5+</span>
                     </label>
                 </div>
-                <button class="text-yellow-50 rounded-lg p-2 bg-gray-800 w-full">Save Goals</button>
+                <button id="saveGoal3" class="text-yellow-50 rounded-lg p-2 bg-gray-800 w-full">Save Goals</button>
             </div>
         </main>
     </div>
