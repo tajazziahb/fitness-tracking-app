@@ -1,6 +1,6 @@
 import { signOut } from "../login/auth.js";
 import { supabase } from "../src/supabase.js";
-import console from "node:console";
+import confetti from "canvas-confetti";
 
 document.querySelector('#sign-out')?.addEventListener('click', async () => {
     const result = await signOut();
@@ -38,10 +38,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
 
         if (error) {
-            console.error("Error saving goal:", error.message);
+            console.error('Error saving goal:', error.message);
             showModal('Error', 'There was an error saving your goal.');
         } else {
             showModal('Success', 'Goal saved successfully!');
+            triggerConfetti();
         }
     }
 
@@ -63,10 +64,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
 
         if (error) {
-            console.error("Error saving goal:", error.message);
+            console.error('Error saving goal:', error.message);
             showModal('Error', 'There was an error saving your goal.');
         } else {
             showModal('Success', 'Goal saved successfully!');
+            triggerConfetti();
         }
     }
 
@@ -76,8 +78,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         const weeklyWorkouts = document.querySelector('input[name="workouts"]:checked').value;
 
         if (!weeklyWorkouts) {
-                showModal('Error', 'Please fill out all fields.');
-                return;
+            showModal('Error', 'Please fill out all fields.');
+            return;
         }
         const {error} = await supabase
             .from("goal_3")
@@ -86,12 +88,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                 weekly_workouts: weeklyWorkouts,
             });
 
-          if (error) {
-                console.error("Error saving goal:", error.message);
-                showModal("There was an error saving your goal.");
-            } else {
-                showModal("Goal saved successfully!");
-            }
+        if (error) {
+            console.error('Error saving goal:', error.message);
+            showModal('Error', 'There was an error saving your goal.');
+        } else {
+            showModal('Success', 'Goal saved successfully!');
+            triggerConfetti();
+        }
     }
 
     // Function to show modal
@@ -101,5 +104,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         // Open modal
         document.getElementById('feedbackModal').classList.add('modal-open');
+    }
+
+    // Function to trigger confetti effect
+    function triggerConfetti() {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
     }
 });
