@@ -1,0 +1,2 @@
+### Convert design to TailwindCSS/DaisyUI
+Attached is the design of my application. My front-end stack is vanilla Javascript with TailwindCSS and DaisyUI. Given this, convert this design to optimized code. Additional consideration: use placeholders for all images
