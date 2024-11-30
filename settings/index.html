@@ -1,81 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FitTrack Settings</title>
-  <link href="/dist/styles.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack Settings</title>
+    <link href="/dist/styles.css" rel="stylesheet">
 </head>
 <body class="bg-secondary text-accent font-sans">
 <script type="module">
-        import {supabase} from "../src/supabase.js";
+    import {supabase} from "../src/supabase.js";
 
-        // Get the current session
-        document.addEventListener('DOMContentLoaded', async () => {
-            const {data: {session}} = await supabase.auth.getSession();
+    // Get the current session
+    document.addEventListener('DOMContentLoaded', async () => {
+        const {data: {session}} = await supabase.auth.getSession();
 
-            if (!session) {
-                // If user is not logged in, redirect to login page
-                window.location.replace('/login/');
-            }
-        });
+        if (!session) {
+            // If user is not logged in, redirect to login page
+            window.location.replace('/login/');
+        }
+    });
 
 </script>
-  <div class="max-w-md mx-auto p-4">
-     <!-- Header -->
-        <header class="flex justify-between items-center mb-12">
-            <div class="flex items-center">
-                <img src="https://wtgf.org/wp-content/uploads/2016/06/running-100x100.png" alt="FitTrack Logo" class="w-10 h-10 mr-2">
-                <span class="text-lg font-bold text-lime-500">FitTrack</span>
+<div class="max-w-md mx-auto p-4">
+    <!-- Header -->
+    <header class="flex justify-between items-center mb-12">
+        <div class="flex items-center">
+            <img src="https://wtgf.org/wp-content/uploads/2016/06/running-100x100.png" alt="FitTrack Logo"
+                 class="w-10 h-10 mr-2">
+            <a href="/index.html" class="text-lg font-bold text-lime-500">FitTrack</a>
+        </div>
+        <div class="flex">
+            <a id="homeBtn" class=" font-bold text-lime-500 rounded-lg p-2 " href="/index.html">Home</a>
+            <a id="communityBtn" class=" font-bold text-lime-500 rounded-lg p-2 " href="/community/">Community</a>
+
+        </div>
+    </header>
+    <div class="max-w-md mx-auto space-y-6 bg-black p-6 rounded-lg">
+        <!-- Profile Settings Section -->
+        <div class="">
+            <h2 class="text-lg text-orange-500 font-bold mb-4">Profile Settings</h2>
+            <div class="bg-orange-500 p-4 space-y-4 shadow-sm">
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text text-lime-500 font-medium">Username</span>
+                    </label>
+                    <input
+                            type="text"
+                            placeholder="your_username"
+                            class="input input-bordered w-full focus:outline-none focus:border-toggle-active mb-4 rounded-lg p-2 "
+                    />
+                </div>
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text text-lime-500 font-medium">Email</span>
+                    </label>
+                    <input
+                            type="email"
+                            placeholder="example@mail.com"
+                            class="input input-bordered bg-input-bg w-full focus:outline-none focus:border-toggle-active mb-4 rounded-lg p-2"
+                    />
+                </div>
             </div>
-            <div class="flex">
-                 <a id="homeBtn" class=" font-bold text-lime-500 rounded-lg p-2 " href="/index.html">Home</a>
-                 <a id="communityBtn" class=" font-bold text-lime-500 rounded-lg p-2 " href="/community/">Community</a>
+        </div>
 
+        <!-- Notification Settings Section -->
+        <div>
+            <h2 class="text-lg text-orange-500 font-bold mb-3">Notification Settings</h2>
+            <div class="bg-settings-bg rounded-xl p-4 space-y-4 shadow-sm">
+                <div class="flex justify-between items-center">
+                    <span class="font-medium text-lime-500">Email</span>
+                    <input type="checkbox" class="toggle toggle-warning bg-toggle-active" checked/>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="font-medium text-lime-500">Push Notifications</span>
+                    <input type="checkbox" class="toggle toggle-warning bg-toggle-active" checked/>
+                </div>
             </div>
-        </header>
+        </div>
 
-    <!-- Notifications and Dark Mode Section -->
-    <div class="bg-white p-4 rounded-lg shadow-lg mb-4">
-      <div class="flex justify-between items-center mb-4">
-        <span>Notification</span>
-        <input type="checkbox" class="toggle toggle-primary" checked>
-      </div>
-      <div class="flex justify-between items-center">
-        <span>Dark Mode</span>
-        <input type="checkbox" class="toggle toggle-primary">
-      </div>
+        <!-- Account Settings Section -->
+        <div>
+            <h2 class="text-lg font-bold text-orange-500">Account Settings</h2>
+            <div class="bg-settings-bg rounded-xl p-4 space-y-4 shadow-sm">
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text text-lime-500 font-medium">Change Password</span>
+                    </label>
+                    <input
+                            type="password"
+                            placeholder="New Password"
+                            class="input input-bordered bg-input-bg w-full focus:outline-none focus:border-toggle-active mb-4 rounded-lg p-2"
+                    />
+                    <input
+                            type="password"
+                            placeholder="Confirm Password"
+                            class="input input-bordered bg-input-bg w-full focus:outline-none focus:border-toggle-active mb-4 rounded-lg p-2"
+                    />
+                </div>
+
+                <div class="pt-4">
+                    <h3 class="font-bold text-orange-500 mb-2">App Information</h3>
+                    <div class="text-sm text-lime-500 mb-4">
+                        <p>Version: 1.0.5</p>
+                        <p>Last Update: October 2023</p>
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <h3 class="font-bold text-orange-500 mb-3">Privacy Settings</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium text-lime-500">Share Data</span>
+                            <input type="checkbox" class="toggle toggle-warning bg-toggle-active" checked/>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium text-lime-500">Location Access</span>
+                            <input type="checkbox" class="toggle toggle-warning bg-toggle-active" checked/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Account Management Section -->
-    <div class="bg-white p-4 rounded-lg shadow-lg mb-4">
-      <h2 class="text-lg font-semibold mb-4">Account Management</h2>
-      <div class="flex justify-between items-center mb-2">
-        <span>Change Password</span>
-        <a href="#" class="text-accent"><img src="https://via.placeholder.com/20" alt="arrow"></a>
-      </div>
-      <div class="flex justify-between items-center">
-        <span>Privacy Settings</span>
-        <a href="#" class="text-accent"><img src="https://via.placeholder.com/20" alt="arrow"></a>
-      </div>
-    </div>
+    <style>
+        /* Custom styles for toggle switch */
+        .toggle:checked {
+            background-color: #FF8544 !important;
+            border-color: #FF8544 !important;
+        }
 
-    <!-- App Information Section -->
-    <div class="bg-white p-4 rounded-lg shadow-lg">
-      <h2 class="text-lg font-semibold mb-4">App Information</h2>
-      <div class="flex justify-between items-center mb-2">
-        <span>Version</span>
-        <span>1.0.0</span>
-      </div>
-      <div class="flex justify-between items-center">
-        <span>Support</span>
-        <a href="#" class="text-accent"><img src="https://via.placeholder.com/20" alt="arrow"></a>
-      </div>
-    </div>
-  </div>
+        /* Subtle shadow for cards */
+        .shadow-sm {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
 
-  <script>
-    // Optionally, you can add theme toggle behavior if needed
-  </script>
+        /* Input focus styles */
+        .input:focus {
+            border-color: #FF8544;
+            box-shadow: 0 0 0 1px #FF8544;
+        }
+    </style>
 </body>
 </html>
