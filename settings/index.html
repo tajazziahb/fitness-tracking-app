@@ -6,7 +6,7 @@
     <title>FitTrack Settings</title>
     <link href="/dist/styles.css" rel="stylesheet">
 </head>
-<body class="bg-secondary text-accent font-sans">
+<body class=" text-accent font-sans">
 <script type="module">
     import {supabase} from "../src/supabase.js";
 
@@ -16,7 +16,17 @@
 
         if (!session) {
             // If user is not logged in, redirect to login page
-            window.location.replace('/login/');
+            window.location.replace('/login/')
+        }
+    });
+
+    // Hook up the sign-out functionality
+    document.querySelector('#sign-out')?.addEventListener('click', async () => {
+        const result = await signOut();
+
+        if (result.success) {
+            window.location.href = '/login/';
+            localStorage.removeItem('session');
         }
     });
 
@@ -31,6 +41,7 @@
         </div>
         <div class="flex">
             <a id="homeBtn" class=" font-bold text-lime-500 rounded-lg p-2 " href="/index.html">Home</a>
+            <a class="font-bold text-lime-500 rounded-lg p-2" href="#" id="sign-out">Sign-out</a>
         </div>
     </header>
     <div class="max-w-md mx-auto space-y-6 bg-black p-6 rounded-lg">
@@ -139,5 +150,7 @@
             box-shadow: 0 0 0 1px #FF8544;
         }
     </style>
+</div>
+<script src="/settings/settings.js" type="module"></script>
 </body>
 </html>

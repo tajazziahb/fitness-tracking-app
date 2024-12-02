@@ -20,6 +20,16 @@
             // If user is not logged in, redirect to login page
             window.location.replace('/login/');
         }
+
+        // Hook up the sign-out functionality
+        document.querySelector('#sign-out')?.addEventListener('click', async () => {
+            const result = await signOut();
+
+            if (result.success) {
+                window.location.href = '/login/';
+                localStorage.removeItem('session');
+            }
+        });
     });
 </script>
 <div class="container mx-auto px-4 py-8 max-w-md" id="app">

@@ -22,6 +22,17 @@
             window.location.replace('/login/');
         }
     });
+
+    // Hook up the sign-out functionality
+    document.querySelector('#sign-out')?.addEventListener('click', async () => {
+        const result = await signOut();
+
+        if (result.success) {
+            window.location.href = '/login/';
+            localStorage.removeItem('session');
+        }
+    });
+
 </script>
 <div class="container mx-auto px-4 max-w-md" id="app">
 
@@ -274,5 +285,9 @@
                     <button class="rounded bg-lime-500 text-white btn-sm">Join</button>
                 </div>
             </div>
+        </section>
+    </div>
+</div>
+<script src="/community/community.js" type="module"></script>
 </body>
 </html>

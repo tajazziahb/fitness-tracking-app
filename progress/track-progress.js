@@ -1,5 +1,5 @@
 import {supabase} from "../src/supabase.js";
-
+import { signOut } from "../login/auth.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("progressForm").addEventListener("submit", trackProgress);
@@ -9,6 +9,16 @@ document.addEventListener("DOMContentLoaded", () => {
     loadRecentGoals();
     loadWeeklyProgressChart();
 });
+
+// Hook up the sign-out functionality
+    document.querySelector('#sign-out')?.addEventListener('click', async () => {
+        const result = await signOut();
+
+        if (result.success) {
+            window.location.href = '/login/';
+            localStorage.removeItem('session');
+        }
+    });
 
 async function trackProgress(event) {
     event.preventDefault();
