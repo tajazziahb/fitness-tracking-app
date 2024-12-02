@@ -100,13 +100,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    // Function to show modal
-    function showModal(title, message) {
+       function showModal(title, message) {
         document.getElementById('feedbackTitle').innerText = title;
         document.getElementById('feedbackMessage').innerText = message;
 
         // Open modal
         document.getElementById('feedbackModal').classList.add('modal-open');
+
+        // Close the modal and redirect after 2 seconds if success
+        if (title === 'Success') {
+            setTimeout(() => {
+                document.getElementById('feedbackModal').classList.remove('modal-open');
+                window.location.href = '/progress/'; // redirecting to progress page after success
+            }, 2000);
+        }
     }
 
     // Function to trigger confetti effect

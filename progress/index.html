@@ -37,290 +37,51 @@
         </div>
     </header>
 
-    <h1 class="text-lime-500 text-xl font-bold mb-4">Fitness Progress</h1>
-    <!-- Main Content -->
-    <div class="bg-black rounded-lg p-6 space-y-4">
-        <!-- Weight Chart -->
-        <div class="card bg-white shadow-lg">
-            <div class="p-6">
-                <h3 class="text-orange-500 font-bold mb-2">Weight Tracking (lbs)</h3>
-                <canvas id="weightChart"></canvas>
+    <!-- Workout Progress Input -->
+    <div class="card bg-white shadow-lg p-6">
+        <h3 class="text-orange-500 font-bold mb-4">Log Workout Progress</h3>
+        <form id="progressForm" class="space-y-4">
+            <div>
+                <label class="block text-gray-700">Workout Type:</label>
+                <input type="text" id="workoutType" class="input input-bordered w-full" placeholder="e.g. Running">
             </div>
-        </div>
-
-        <!-- Calories Chart -->
-        <div class="card bg-black shadow-lg">
-            <div class="p-4">
-                <h3 class="text-orange-500 font-bold mb-4">Calories Burned</h3>
-                <canvas id="caloriesChart"></canvas>
+            <div>
+                <label class="block text-gray-700">Duration (minutes):</label>
+                <input type="number" id="workoutDuration" class="input input-bordered w-full" placeholder="e.g. 30">
             </div>
-        </div>
-
-        <!-- Steps Chart -->
-        <div class="card bg-white shadow-lg p-6">
-            <div class="">
-                <h3 class="text-orange-500 font-bold mb-4">Steps Counted</h3>
-                <canvas id="stepsChart"></canvas>
+            <div>
+                <label class="block text-gray-700">Calories Burned:</label>
+                <input type="number" id="caloriesBurned" class="input input-bordered w-full" placeholder="e.g. 300">
+            </div>
+            <button type="submit" class="btn bg-orange-500 hover:bg-orange-600 text-white">Save Progress</button>
+        </form>
+    </div>
+    <div id="progressModal" class="modal">
+        <div class="modal-box">
+            <h3 id="progressModalTitle" class="font-bold text-lg text-orange-500"></h3>
+            <p id="progressModalMessage" class="py-4 text-black"></p>
+            <div class="modal-action">
+                <button class="btn" onclick="closeProgressModal()">Close</button>
             </div>
         </div>
     </div>
+
+    <section class="mt-8">
+        <h2 class="text-2xl font-bold mb-2 text-lime-500">Recent Goals</h2>
+        <div id="recent-goals" class="space-y-2">
+            <!-- Recent goals will be dynamically inserted here -->
+        </div>
+    </section>
+
+    <div class="mb-10">
+        <h3 class="text-orange-500 font-bold text-2xl">Progress Over Time</h3>
+    </div>
+    <!-- Chart Section for Weekly Progress -->
+    <div class="mt-2"> <!-- Adjusted margin-top from mt-4 to mt-2 -->
+        <h3 class="text-lime-500 text-xl font-bold mt-2 mb-6">Weekly Progress</h3>
+        <canvas id="myChart" width="400" height="200"></canvas>
+    </div>
 </div>
-
-<script>
-    // Weight Chart
-    const weightCtx = document.getElementById('weightChart').getContext('2d');
-    new Chart(weightCtx, {
-        type: 'line',
-        data: {
-            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
-            datasets: [
-                {
-                    label: 'Actual Weight',
-                    data: [165, 167, 169, 171, 174, 176],
-                    borderColor: '#f97316',
-                    tension: 0.4,
-                    borderWidth: 2
-                },
-                {
-                    label: 'Target Weight',
-                    data: [165, 163, 160, 158, 156, 154],
-                    borderColor: '#84cc16',
-                    tension: 0.4,
-                    borderWidth: 2
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'bottom'
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: false
-                }
-            }
-        }
-    });
-
-    // Calories Chart
-    const caloriesCtx = document.getElementById('caloriesChart').getContext('2d');
-    new Chart(caloriesCtx, {
-        type: 'bar',
-        data: {
-            labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
-            datasets: [
-                {
-                    label: 'Actual',
-                    data: [2200, 1800, 2000, 2400],
-                    backgroundColor: '#f97316'
-                },
-                {
-                    label: 'Target',
-                    data: [1500, 1500, 1500, 1500],
-                    backgroundColor: '#84cc16'
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'bottom'
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-    // Steps Chart
-    const stepsCtx = document.getElementById('stepsChart').getContext('2d');
-    new Chart(stepsCtx, {
-        type: 'bar',
-        data: {
-            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            datasets: [
-                {
-                    label: 'Actual Steps',
-                    data: [8000, 12000, 15000, 10000, 9000, 14000, 13000],
-                    backgroundColor: '#f97316'
-                },
-                {
-                    label: 'Target Steps',
-                    data: [10000, 10000, 10000, 10000, 10000, 10000, 10000],
-                    backgroundColor: '#84cc16'
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'bottom'
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-</script>
-
-
-<script>
-    // Weight Chart
-    const weightCtx = document.getElementById('weightChart').getContext('2d');
-    new Chart(weightCtx, {
-        type: 'line',
-        data: {
-            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-            datasets: [
-                {
-                    label: 'Current Weight',
-                    data: [72, 71.5, 71, 70.5, 70],
-                    borderColor: '#f97316',
-                    tension: 0.4,
-                    borderWidth: 2
-                },
-                {
-                    label: 'Goal Weight',
-                    data: [70, 69, 68, 67, 66],
-                    borderColor: '#84cc16',
-                    tension: 0.4,
-                    borderWidth: 2
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: false
-                }
-            },
-            scales: {
-                y: {
-                    grid: {
-                        color: '#374151'
-                    },
-                    ticks: {
-                        color: '#ffffff'
-                    }
-                },
-                x: {
-                    grid: {
-                        color: '#374151'
-                    },
-                    ticks: {
-                        color: '#ffffff'
-                    }
-                }
-            }
-        }
-    });
-
-    // Calories Chart
-    const caloriesCtx = document.getElementById('caloriesChart').getContext('2d');
-    new Chart(caloriesCtx, {
-        type: 'bar',
-        data: {
-            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            datasets: [
-                {
-                    label: 'Calories',
-                    data: [2200, 2400, 2600, 3000, 2100, 1900, 2000],
-                    backgroundColor: '#f97316',
-                },
-                {
-                    label: 'Target',
-                    data: [1800, 1800, 1800, 1800, 1800, 1800, 1800],
-                    backgroundColor: '#fed7aa',
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: false
-                }
-            },
-            scales: {
-                y: {
-                    grid: {
-                        color: '#374151'
-                    },
-                    ticks: {
-                        color: '#ffffff'
-                    }
-                },
-                x: {
-                    grid: {
-                        color: '#374151'
-                    },
-                    ticks: {
-                        color: '#ffffff'
-                    }
-                }
-            }
-        }
-    });
-
-    // Steps Chart
-    const stepsCtx = document.getElementById('stepsChart').getContext('2d');
-    const stepsData = Array.from({length: 100}, () => ({
-        x: Math.random() * 24,
-        y: Math.random() * 2000 + 7000
-    }));
-
-    new Chart(stepsCtx, {
-        type: 'scatter',
-        data: {
-            datasets: [{
-                label: 'Steps',
-                data: stepsData,
-                backgroundColor: '#f97316'
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: false
-                }
-            },
-            scales: {
-                y: {
-                    grid: {
-                        color: '#374151'
-                    },
-                    ticks: {
-                        color: '#ffffff'
-                    }
-                },
-                x: {
-                    grid: {
-                        color: '#374151'
-                    },
-                    ticks: {
-                        color: '#ffffff'
-                    }
-                }
-            }
-        }
-    });
-</script>
-<script type="module" src="/src/main.js"></script>
+<script type="module" src="/progress/track-progress.js"></script>
 </body>
 </html>

@@ -41,7 +41,7 @@
         <main class="space-y-6 pb-8">
             <h1 class=" text-orange-500 text-xl font-bold mb-4">Set Your Goals</h1>
 
-            <div class="bg-black rounded-lg p-6 space-y-4">
+            <div id="goal1-details" class=" goal-details bg-black rounded-lg p-6 space-y-4">
                 <div>
                     <label class="block text-sm font-medium text-lime-500 mb-1">Target Weight (lbs)
                     <input type="number" id="target-weight" class="input input-bordered w-1/2 mb-4 "></label>
@@ -73,13 +73,13 @@
                 <button id="saveGoal1" class="text-yellow-50 rounded-lg p-2 bg-gray-800 w-full mb-2">Save Goal </button>
             </div>
 
-            <div class="bg-black rounded-lg shadow p-6">
+            <div id="goal2-details" class="goal-details bg-black rounded-lg shadow p-6">
                 <label class="block text-sm font-medium text-lime-500">Daily Step Count</label>
                 <input type="number" id="steps" class="input input-bordered w-1/2 mb-4"><br>
                 <button  id="saveGoal2" class="text-yellow-50 rounded-lg p-2 bg-gray-800 w-full">Save Goal</button>
             </div>
 
-            <div class="bg-black rounded-lg shadow p-6">
+            <div id="goal3-details" class="goal-details bg-black rounded-lg shadow p-6">
                 <label class="block text-sm font-medium text-lime-500">How many workouts for this week?</label>
                 <div class="space-y-2">
                     <label class="flex items-center">
@@ -100,15 +100,15 @@
         </main>
 </div>
  <!-- DaisyUI Modal for Feedback -->
-    <div id="feedbackModal" class="modal">
-        <div class="modal-box">
-            <h2 id="feedbackTitle" class="text-lg text-orange-500 font-bold"></h2>
-            <p id="feedbackMessage" class="py-4 text-orange-500 font-bold"></p>
-            <div class="modal-action">
-                <button class="btn btn-primary" onclick="closeModal()">OK</button>
-            </div>
-        </div>
-    </div>
+       <div id="feedbackModal" class="modal">
+       <div class="modal-box">
+           <h3 id="feedbackTitle" class="font-bold text-orange-500">Successful Save!</h3>
+           <p id="feedbackMessage" class="py-4 text-orange-500">Your goal has been saved successfully. Redirecting...</p>
+           <div class="modal-action">
+               <button class="btn" onclick="closeModal()">Okay</button>
+           </div>
+       </div>
+   </div>
 <script src="add-goal.js" type="module"></script>
  <script>
         function closeModal() {
