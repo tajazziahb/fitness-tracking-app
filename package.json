@@ -18,7 +18,7 @@
     "vite": "^5.4.1"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.46.2",
+    "@supabase/supabase-js": "^2.49.8",
     "canvas-confetti": "^1.9.3"
   },
   "description": "## Summary Welcome to the Fitness Tracking App! This project is designed to help users set and achieve their fitness goals while engaging with a community of like-minded individuals. The app tracks progress, supports goal setting, and provides community features that enhance the user experience.",
