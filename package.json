@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run build:css && vite build",
     "preview": "vite preview",
     "build:css": "npx tailwindcss -i ./src/style.css -o ./dist/output.css"
   },
