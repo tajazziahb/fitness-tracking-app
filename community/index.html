@@ -1,293 +1,289 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
 <head>
-    <meta charset="UTF-8"/>
-    <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>FitTrack-Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack Settings</title>
     <link href="/dist/output.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
-<script type="module">
-    import {supabase} from "../src/supabase.js";
+    <script type="module">
+        import { supabase } from "../src/supabase.js";
 
-    // Get the current session
-    document.addEventListener('DOMContentLoaded', async () => {
-        const {data: {session}} = await supabase.auth.getSession();
+        // Get the current session
+        document.addEventListener('DOMContentLoaded', async () => {
+            const { data: { session } } = await supabase.auth.getSession();
 
-        if (!session) {
-            // If user is not logged in, redirect to login page
-            window.location.replace('/login/');
-        }
-    });
+            if (!session) {
+                // If user is not logged in, redirect to login page
+                window.location.replace('/login/');
+            }
+        });
 
-    // Hook up the sign-out functionality
-    document.querySelector('#sign-out')?.addEventListener('click', async () => {
-        const result = await signOut();
+        // Hook up the sign-out functionality
+        document.querySelector('#sign-out')?.addEventListener('click', async () => {
+            const result = await signOut();
 
-        if (result.success) {
-            window.location.href = '/login/';
-            localStorage.removeItem('session');
-        }
-    });
+            if (result.success) {
+                window.location.href = '/login/';
+                localStorage.removeItem('session');
+            }
+        });
 
-</script>
-<div class="container mx-auto px-4 max-w-md" id="app">
+    </script>
+    <div class="container mx-auto px-4 max-w-md" id="app">
 
-    <!-- Header -->
-     <header class="flex justify-between items-center mb-4 mt-10 ">
-        <div class="flex items-center">
-            <img src="https://wtgf.org/wp-content/uploads/2016/06/running-100x100.png" alt="FitTrack Logo"
-                 class="w-10 h-10 mr-2">
-            <a href="/index.html" class="text-lg font-bold text-lime-500 mr-12">FitTrack</a>
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-4 mt-10 ">
+            <div class="flex items-center">
+                <img src="https://wtgf.org/wp-content/uploads/2016/06/running-100x100.png" alt="FitTrack Logo"
+                    class="w-10 h-10 mr-2">
+                <a href="/index.html" class="text-lg font-bold text-lime-500 mr-12">FitTrack</a>
+            </div>
+            <div class="flex items-center space-x-2">
+                <a id="settingsBtn" class="font-bold text-lime-500 rounded-lg p-2" href="/settings/">Settings</a>
+                <a class="font-bold text-lime-500 rounded-lg p-2" href="#" id="sign-out">Sign-out</a>
+            </div>
+        </header>
+        <div class="max-w-md mx-auto p-4 space-y-6 mt-12  ">
+            <!-- Community Feed Section -->
+            <section>
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg text-lime-500 font-bold">Community Feed</h2>
+                    <button class="rounded bg-neutral-50 btn-sm font-bold text-orange-500">Find Friends</button>
+                </div>
+
+                <!-- Feed Items -->
+                <div class="space-y-4">
+                    <!-- Marathon Post -->
+                    <div class="bg-black rounded-lg p-4 shadow">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-3">
+                                <div class="dropdown dropdown-hover">
+                                    <img tabindex="0" src="/images/runner.png" alt="Alex's avatar"
+                                        class="w-10 h-10 rounded-full cursor-pointer" />
+                                    <div tabindex="0"
+                                        class="dropdown-content z-[1] card card-compact w-64 p-2 shadow bg-black">
+                                        <div class="card-body">
+                                            <h3 class="font-bold text-white">Alex</h3>
+                                            <p class="text-sm text-neutral-50">Marathon enthusiast</p>
+                                            <div class="flex gap-2">
+                                                <button class="rounded bg-orange-500 text-white btn-sm">Follow</button>
+                                                <button
+                                                    class="rounded bg-neutral-50 btn-sm text-orange-500">Message</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-white">Alex completed the Marathon Challenge!</p>
+                                    <p class="text-sm text-gray-500">2 hours ago</p>
+                                </div>
+                            </div>
+                            <button class="rounded btn-circle btn-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-lime-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <img src="/images/marathon.png" alt="Marathon" class="w-full h-48 object-cover rounded-lg" />
+                        <div class="flex justify-between items-center mt-3">
+                            <div class="flex gap-4">
+                                <button class="rounded-lg btn bg-neutral-50 btn-sm gap-2 text-orange-500 font-bold">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-lime-500">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                    </svg>
+                                    24
+                                </button>
+                                <button class="rounded-lg btn bg-neutral-50 btn-sm gap-2 text-orange-500 font-bold">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-lime-500">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
+                                    </svg>
+                                    8
+                                </button>
+                            </div>
+                            <button
+                                class="rounded-lg btn bg-neutral-50 btn-sm gap-2 text-orange-500 font-bold">Share</button>
+                        </div>
+                    </div>
+
+                    <!-- Yoga Post -->
+                    <div class="bg-black rounded-lg p-4 shadow">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-3">
+                                <div class="dropdown dropdown-hover">
+                                    <img tabindex="0" src="/images/ai-image.png" alt="Jamie's avatar"
+                                        class="w-10 h-10 rounded-full cursor-pointer" />
+                                    <div tabindex="0"
+                                        class="dropdown-content z-[1] card card-compact w-64 p-2 shadow bg-black">
+                                        <div class="card-body">
+                                            <h3 class="font-bold text-white">Jamie</h3>
+                                            <p class="text-sm text-neutral-50">Yoga instructor</p>
+                                            <div class="flex gap-2">
+                                                <button class="rounded bg-orange-500 text-white btn-sm">Follow</button>
+                                                <button
+                                                    class="rounded-lg btn bg-neutral-50 btn-sm gap-2 text-orange-500">Message</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-white">Jamie shared a new Yoga Pose!</p>
+                                    <p class="text-sm text-gray-500">2 hours ago</p>
+                                </div>
+                            </div>
+                            <button class="rounded btn-circle btn-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-lime-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <img src="/images/yoga.png" alt="Yoga pose" class="w-full h-48 object-cover rounded-lg" />
+                        <div class="flex justify-between items-center mt-3">
+                            <div class="flex gap-4">
+                                <button class="rounded-lg btn bg-neutral-50 btn-sm gap-2 text-orange-500 font-bold">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-lime-500">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                    </svg>
+                                    32
+                                </button>
+                                <button class="rounded-lg btn bg-neutral-50 btn-sm gap-2 text-orange-500 font-bold">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-lime-500 ">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
+                                    </svg>
+                                    12
+                                </button>
+                            </div>
+                            <button
+                                class="rounded-lg btn bg-neutral-50 btn-sm gap-2 text-orange-500 font-bold">Share</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Leaderboard Section -->
+            <section>
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg text-lime-500 font-bold">Leaderboard</h2>
+                    <button class="rounded bg-neutral-50 btn-sm font-bold text-orange-500">View All</button>
+                </div>
+                <div class="space-y-2">
+                    <!-- Top User -->
+                    <div class="flex items-center justify-between p-3 rounded-lg bg-orange-500">
+                        <div class="flex items-center gap-3">
+                            <span
+                                class="w-6 h-6 flex items-center justify-center rounded-full bg-black text-white">1</span>
+                            <div class="dropdown dropdown-hover">
+                                <button class="font-bold text-white">Chris</button>
+                                <div tabindex="0"
+                                    class="dropdown-content z-[1] card card-compact w-64 p-2 shadow bg-black">
+                                    <div class="card-body">
+                                        <h3 class="font-bold text-white">Chris</h3>
+                                        <p class="text-sm text-neutral-50">Top performer</p>
+                                        <div class="flex gap-2">
+                                            <button class="rounded bg-lime-500 text-white btn-sm">Follow</button>
+                                            <button
+                                                class="rounded-lg btn bg-neutral-50 btn-sm gap-2 text-lime-500 font-bold">Message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="text-white">1500 pts</span>
+                    </div>
+
+                    <!-- Other Users -->
+                    <div class="flex items-center justify-between p-3 rounded-lg bg-orange-500">
+                        <div class="flex items-center gap-3">
+                            <span
+                                class="w-6 h-6 flex items-center justify-center rounded-full bg-black text-white">2</span>
+                            <div class="dropdown dropdown-hover">
+                                <button class="font-bold text-white">Sam</button>
+                                <div tabindex="0"
+                                    class="dropdown-content z-[1] card card-compact w-64 p-2 shadow bg-black">
+                                    <div class="card-body">
+                                        <h3 class="font-bold text-white">Sam</h3>
+                                        <p class="text-sm text-neutral-50">Rising star</p>
+                                        <div class="flex gap-2">
+                                            <button class="rounded bg-lime-500 btn-sm text-white">Follow</button>
+                                            <button
+                                                class="rounded-lg btn bg-neutral-50 btn-sm gap-2 text-lime-500 font-bold">Message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="text-white">1200 pts</span>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 rounded-lg bg-orange-500">
+                        <div class="flex items-center gap-3">
+                            <span
+                                class="w-6 h-6 flex items-center justify-center rounded-full bg-black text-white">3</span>
+                            <div class="dropdown dropdown-hover">
+                                <button class="font-bold text-white">Jordan</button>
+                                <div tabindex="0"
+                                    class="dropdown-content z-[1] card card-compact w-64 p-2 shadow bg-black">
+                                    <div class="card-body">
+                                        <h3 class="font-bold text-white">Jordan</h3>
+                                        <p class="text-sm text-neutral-50">Consistent learner</p>
+                                        <div class="flex gap-2">
+                                            <button class="rounded bg-lime-500 btn-sm text-white">Follow</button>
+                                            <button
+                                                class="rounded-lg btn bg-neutral-50 btn-sm gap-2 text-lime-500 font-bold">Message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="text-white">1000 pts</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Groups Section -->
+            <section>
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-bold text-lime-500">Groups</h2>
+                    <button class="rounded bg-neutral-50 btn-sm font-bold text-orange-500">Browse All</button>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between bg-black p-4 rounded-lg shadow">
+                        <div>
+                            <h3 class="font-medium text-white">Yoga Enthusiasts</h3>
+                            <p class="text-sm text-neutral-50">Join other yoga lovers</p>
+                        </div>
+                        <button class=" rounded text-white bg-lime-500 btn-sm">Join</button>
+                    </div>
+
+                    <div class="flex items-center justify-between bg-black p-4 rounded-lg shadow">
+                        <div>
+                            <h3 class="font-bold text-white">Marathon Runners</h3>
+                            <p class="text-sm text-neutral-50">Connect with runners</p>
+                        </div>
+                        <button class="rounded bg-lime-500 text-white btn-sm">Join</button>
+                    </div>
+                </div>
+            </section>
         </div>
-         <div class="flex items-center space-x-2">
-             <a id="settingsBtn" class="font-bold text-lime-500 rounded-lg p-2" href="/settings/">Settings</a>
-             <a class="font-bold text-lime-500 rounded-lg p-2" href="#" id="sign-out">Sign-out</a>
-         </div>
-    </header>
-    <div class="max-w-md mx-auto p-4 space-y-6 bg-black mt-12  ">
-        <!-- Community Feed Section -->
-        <section>
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-lg text-lime-500 font-bold">Community Feed</h2>
-                <button class="rounded bg-neutral-50 btn-sm font-bold text-orange-500">Find Friends</button>
-            </div>
-
-            <!-- Feed Items -->
-            <div class="space-y-4">
-                <!-- Marathon Post -->
-                <div class="bg-black rounded-lg p-4 shadow">
-                    <div class="flex items-center justify-between mb-3">
-                        <div class="flex items-center gap-3">
-                            <div class="dropdown dropdown-hover">
-                                <img
-                                        tabindex="0"
-                                        src="/images/runner.png"
-                                        alt="Alex's avatar"
-                                        class="w-10 h-10 rounded-full cursor-pointer"
-                                />
-                                <div tabindex="0"
-                                     class="dropdown-content z-[1] card card-compact w-64 p-2 shadow bg-black">
-                                    <div class="card-body">
-                                        <h3 class="font-bold text-white">Alex</h3>
-                                        <p class="text-sm text-neutral-50">Marathon enthusiast</p>
-                                        <div class="flex gap-2">
-                                            <button class="rounded bg-orange-500 text-white btn-sm">Follow</button>
-                                            <button class="rounded bg-neutral-50 btn-sm text-orange-500">Message</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <p class="font-medium text-white">Alex completed the Marathon Challenge!</p>
-                                <p class="text-sm text-gray-500">2 hours ago</p>
-                            </div>
-                        </div>
-                        <button class="rounded btn-circle btn-sm">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                 stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-lime-500">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                      d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <img
-                            src="/images/marathon.png"
-                            alt="Marathon"
-                            class="w-full h-48 object-cover rounded-lg"
-                    />
-                    <div class="flex justify-between items-center mt-3">
-                        <div class="flex gap-4">
-                            <button class="rounded-lg btn bg-neutral-50 btn-sm gap-2 text-orange-500 font-bold">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                     stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-lime-500">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
-                                </svg>
-                                24
-                            </button>
-                            <button class="rounded-lg btn bg-neutral-50 btn-sm gap-2 text-orange-500 font-bold">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                     stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-lime-500">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z"/>
-                                </svg>
-                                8
-                            </button>
-                        </div>
-                        <button class="rounded-lg btn bg-neutral-50 btn-sm gap-2 text-orange-500 font-bold">Share</button>
-                    </div>
-                </div>
-
-                <!-- Yoga Post -->
-                <div class="bg-black rounded-lg p-4 shadow">
-                    <div class="flex items-center justify-between mb-3">
-                        <div class="flex items-center gap-3">
-                            <div class="dropdown dropdown-hover">
-                                <img
-                                        tabindex="0"
-                                        src="/images/ai-image.png"
-                                        alt="Jamie's avatar"
-                                        class="w-10 h-10 rounded-full cursor-pointer"
-                                />
-                                <div tabindex="0"
-                                     class="dropdown-content z-[1] card card-compact w-64 p-2 shadow bg-black">
-                                    <div class="card-body">
-                                        <h3 class="font-bold text-white">Jamie</h3>
-                                        <p class="text-sm text-neutral-50">Yoga instructor</p>
-                                        <div class="flex gap-2">
-                                            <button class="rounded bg-orange-500 text-white btn-sm">Follow</button>
-                                            <button class="rounded-lg btn bg-neutral-50 btn-sm gap-2 text-orange-500">Message</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <p class="font-medium text-white">Jamie shared a new Yoga Pose!</p>
-                                <p class="text-sm text-gray-500">2 hours ago</p>
-                            </div>
-                        </div>
-                        <button class="rounded btn-circle btn-sm">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                 stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-lime-500">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                      d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <img
-                            src="/images/yoga.png"
-                            alt="Yoga pose"
-                            class="w-full h-48 object-cover rounded-lg"
-                    />
-                    <div class="flex justify-between items-center mt-3">
-                        <div class="flex gap-4">
-                            <button class="rounded-lg btn bg-neutral-50 btn-sm gap-2 text-orange-500 font-bold">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                     stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-lime-500">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/>
-                                </svg>
-                                32
-                            </button>
-                            <button class="rounded-lg btn bg-neutral-50 btn-sm gap-2 text-orange-500 font-bold">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                     stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-lime-500 ">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z"/>
-                                </svg>
-                                12
-                            </button>
-                        </div>
-                        <button class="rounded-lg btn bg-neutral-50 btn-sm gap-2 text-orange-500 font-bold">Share</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Leaderboard Section -->
-        <section>
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-lg text-lime-500 font-bold">Leaderboard</h2>
-                <button class="rounded bg-neutral-50 btn-sm font-bold text-orange-500">View All</button>
-            </div>
-            <div class="space-y-2">
-                <!-- Top User -->
-                <div class="flex items-center justify-between p-3 rounded-lg bg-orange-500">
-                    <div class="flex items-center gap-3">
-                        <span class="w-6 h-6 flex items-center justify-center rounded-full bg-black text-white">1</span>
-                        <div class="dropdown dropdown-hover">
-                            <button class="font-bold text-white">Chris</button>
-                            <div tabindex="0"
-                                 class="dropdown-content z-[1] card card-compact w-64 p-2 shadow bg-black">
-                                <div class="card-body">
-                                    <h3 class="font-bold text-white">Chris</h3>
-                                    <p class="text-sm text-neutral-50">Top performer</p>
-                                    <div class="flex gap-2">
-                                        <button class="rounded bg-lime-500 text-white btn-sm">Follow</button>
-                                        <button class="rounded-lg btn bg-neutral-50 btn-sm gap-2 text-lime-500 font-bold">Message</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="text-white">1500 pts</span>
-                </div>
-
-                <!-- Other Users -->
-                <div class="flex items-center justify-between p-3 rounded-lg bg-orange-500">
-                    <div class="flex items-center gap-3">
-                        <span class="w-6 h-6 flex items-center justify-center rounded-full bg-black text-white">2</span>
-                        <div class="dropdown dropdown-hover">
-                            <button class="font-bold text-white">Sam</button>
-                            <div tabindex="0"
-                                 class="dropdown-content z-[1] card card-compact w-64 p-2 shadow bg-black">
-                                <div class="card-body">
-                                    <h3 class="font-bold text-white">Sam</h3>
-                                    <p class="text-sm text-neutral-50">Rising star</p>
-                                    <div class="flex gap-2">
-                                        <button class="rounded bg-lime-500 btn-sm text-white">Follow</button>
-                                        <button class="rounded-lg btn bg-neutral-50 btn-sm gap-2 text-lime-500 font-bold">Message</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="text-white">1200 pts</span>
-                </div>
-
-                <div class="flex items-center justify-between p-3 rounded-lg bg-orange-500">
-                    <div class="flex items-center gap-3">
-                        <span class="w-6 h-6 flex items-center justify-center rounded-full bg-black text-white">3</span>
-                        <div class="dropdown dropdown-hover">
-                            <button class="font-bold text-white">Jordan</button>
-                            <div tabindex="0"
-                                 class="dropdown-content z-[1] card card-compact w-64 p-2 shadow bg-black">
-                                <div class="card-body">
-                                    <h3 class="font-bold text-white">Jordan</h3>
-                                    <p class="text-sm text-neutral-50">Consistent learner</p>
-                                    <div class="flex gap-2">
-                                        <button class="rounded bg-lime-500 btn-sm text-white">Follow</button>
-                                        <button class="rounded-lg btn bg-neutral-50 btn-sm gap-2 text-lime-500 font-bold">Message</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="text-white">1000 pts</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Groups Section -->
-        <section>
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-lg font-bold text-lime-500">Groups</h2>
-                <button class="rounded bg-neutral-50 btn-sm font-bold text-orange-500">Browse All</button>
-            </div>
-            <div class="space-y-3">
-                <div class="flex items-center justify-between bg-black p-4 rounded-lg shadow">
-                    <div>
-                        <h3 class="font-medium text-white">Yoga Enthusiasts</h3>
-                        <p class="text-sm text-neutral-50">Join other yoga lovers</p>
-                    </div>
-                    <button class=" rounded text-white bg-lime-500 btn-sm">Join</button>
-                </div>
-
-                <div class="flex items-center justify-between bg-black p-4 rounded-lg shadow">
-                    <div>
-                        <h3 class="font-bold text-white">Marathon Runners</h3>
-                        <p class="text-sm text-neutral-50">Connect with runners</p>
-                    </div>
-                    <button class="rounded bg-lime-500 text-white btn-sm">Join</button>
-                </div>
-            </div>
-        </section>
     </div>
-</div>
-<script src="/community/community.js" type="module"></script>
+    <script src="/community/community.js" type="module"></script>
 </body>
+
 </html>
